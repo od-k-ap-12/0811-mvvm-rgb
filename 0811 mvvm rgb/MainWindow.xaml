@@ -1,0 +1,55 @@
+﻿<Window x:Class="_0811_mvvm_rgb.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_0811_mvvm_rgb"
+        mc:Ignorable="d"
+        Title="Color Viewer" Height="600" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="95*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="117*"/>
+                <ColumnDefinition Width="385*"/>
+                <ColumnDefinition Width="98*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <CheckBox Grid.Column="0" Grid.Row="0" Content="Alpha" VerticalAlignment="Center" FontSize="17" Margin="10"/>
+            <Slider Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Minimum="0" Maximum="255"/>
+            <CheckBox Grid.Column="0" Grid.Row="1" Content="Red" VerticalAlignment="Center" FontSize="17" Margin="10"/>
+            <Slider Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Minimum="0" Maximum="255"/>
+            <CheckBox Grid.Column="0" Grid.Row="2" Content="Green"  VerticalAlignment="Center" FontSize="17" Margin="10"/>
+            <Slider Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Minimum="0" Maximum="255"/>
+            <CheckBox Grid.Column="0" Grid.Row="3" Content="Blue"  VerticalAlignment="Center" FontSize="17" Margin="10"/>
+            <Slider Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Minimum="0" Maximum="255"/>
+            <Button Grid.Column="0" Grid.Row="4" Margin="5" Content="Add" FontSize="15"/>
+        </Grid>
+        <ListBox ItemsSource="{Binding BooksList}" IsSynchronizedWithCurrentItem="True" SelectedIndex="2" Background="#748CB5" Margin="0,204,0,0" Grid.RowSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="LightBlue" BorderThickness="1" Margin="10">
+                        <StackPanel Margin="10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="#000000" FontSize="15" FontWeight="Bold"/>
+                                <TextBlock Background="Aquamarine" FontSize="15" Margin="10,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
