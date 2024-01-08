@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_0811_mvvm_rgb"
         mc:Ignorable="d"
-        Title="Color Viewer" Height="600" Width="600">
+        Title="RGBA Color Picker" Height="600" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
 
@@ -17,8 +17,9 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="117*"/>
-                <ColumnDefinition Width="385*"/>
-                <ColumnDefinition Width="98*"/>
+                <ColumnDefinition Width="335*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="78*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -27,29 +28,27 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <CheckBox Grid.Column="0" Grid.Row="0" Content="Alpha" VerticalAlignment="Center" FontSize="17" Margin="10"/>
-            <Slider Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Minimum="0" Maximum="255"/>
-            <CheckBox Grid.Column="0" Grid.Row="1" Content="Red" VerticalAlignment="Center" FontSize="17" Margin="10"/>
-            <Slider Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Minimum="0" Maximum="255"/>
-            <CheckBox Grid.Column="0" Grid.Row="2" Content="Green"  VerticalAlignment="Center" FontSize="17" Margin="10"/>
-            <Slider Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Minimum="0" Maximum="255"/>
-            <CheckBox Grid.Column="0" Grid.Row="3" Content="Blue"  VerticalAlignment="Center" FontSize="17" Margin="10"/>
-            <Slider Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Minimum="0" Maximum="255"/>
-            <Button Grid.Column="0" Grid.Row="4" Margin="5" Content="Add" FontSize="15"/>
+            <CheckBox Name="A_enable" Grid.Column="0" Grid.Row="0" Content="Alpha" VerticalAlignment="Center" FontSize="17" Margin="10" IsChecked="True"/>
+            <Slider Name="A_value" Value="{Binding Alpha}" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Maximum="255" IsSnapToTickEnabled="True" TickFrequency="1" IsEnabled="{Binding Path=IsChecked, ElementName=A_enable}"/>
+            <Label Grid.Column="2" Grid.Row="0" Content="{Binding Path=Value, ElementName=A_value}" VerticalAlignment="Center" FontSize="15" Margin="5"/>
+
+            <CheckBox Name="R_enable" Grid.Column="0" Grid.Row="1" Content="Red" VerticalAlignment="Center" FontSize="17" Margin="10" IsChecked="True"/>
+            <Slider Name="R_value"  Value="{Binding Red}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Minimum="0" Maximum="255" IsSnapToTickEnabled="True" TickFrequency="1" IsEnabled="{Binding Path=IsChecked, ElementName=R_enable}"/>
+            <Label Grid.Column="2" Grid.Row="1" Content="{Binding Path=Value, ElementName=R_value}" VerticalAlignment="Center" FontSize="15" Margin="5"/>
+
+            <CheckBox Name="G_enable" Grid.Column="0" Grid.Row="2" Content="Green"  VerticalAlignment="Center" FontSize="17" Margin="10" IsChecked="True"/>
+            <Slider Name="G_value" Value="{Binding Green}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Minimum="0" Maximum="255" IsSnapToTickEnabled="True" TickFrequency="1" IsEnabled="{Binding Path=IsChecked, ElementName=G_enable}"/>
+            <Label Grid.Column="2" Grid.Row="2" Content="{Binding Path=Value, ElementName=G_value}" VerticalAlignment="Center" FontSize="15" Margin="5"/>
+
+            <CheckBox Name="B_enable" Grid.Column="0" Grid.Row="3" Content="Blue"  VerticalAlignment="Center" FontSize="17" Margin="10" IsChecked="True"/>
+            <Slider Name="B_value" Value="{Binding Blue}" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Minimum="0" Maximum="255" IsSnapToTickEnabled="True" TickFrequency="1" IsEnabled="{Binding Path=IsChecked, ElementName=B_enable}"/>
+            <Label Grid.Column="2" Grid.Row="3" Content="{Binding Path=Value, ElementName=B_value}" VerticalAlignment="Center" FontSize="15" Margin="5"/>
+            <Button Command="{Binding AddColor}" Grid.Column="0" Grid.Row="4" Margin="5" Content="Add" FontSize="15"/>
+
+            <TextBlock Grid.Column="3" Grid.Row="0" Grid.RowSpan="4" Margin="10" Background="{Binding ColorPreview}"/>
         </Grid>
-        <ListBox ItemsSource="{Binding BooksList}" IsSynchronizedWithCurrentItem="True" SelectedIndex="2" Background="#748CB5" Margin="0,204,0,0" Grid.RowSpan="2">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="LightBlue" BorderThickness="1" Margin="10">
-                        <StackPanel Margin="10">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="#000000" FontSize="15" FontWeight="Bold"/>
-                                <TextBlock Background="Aquamarine" FontSize="15" Margin="10,0"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+
+
+        <ListView Name="ColorList" Grid.Row="2" HorizontalContentAlignment="Stretch"/>
     </Grid>
 </Window>

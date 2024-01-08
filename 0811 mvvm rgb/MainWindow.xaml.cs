@@ -24,5 +24,6 @@ namespace _0811_mvvm_rgb
         {
             InitializeComponent();
         }
+
     }
 }
