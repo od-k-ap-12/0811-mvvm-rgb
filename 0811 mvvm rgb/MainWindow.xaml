@@ -45,7 +45,7 @@
             <Label Grid.Column="2" Grid.Row="3" Content="{Binding Path=Value, ElementName=B_value}" VerticalAlignment="Center" FontSize="15" Margin="5"/>
             <Button Command="{Binding AddColor}" Grid.Column="0" Grid.Row="4" Margin="5" Content="Add" FontSize="15"/>
 
-            <TextBlock Grid.Column="3" Grid.Row="0" Grid.RowSpan="4" Margin="10" Background="{Binding ColorPreview}"/>
+            <TextBlock Grid.Column="3" Grid.Row="0" Grid.RowSpan="4" Margin="10"/>
         </Grid>
 
 

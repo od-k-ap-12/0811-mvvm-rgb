@@ -18,7 +18,6 @@ namespace _0811_mvvm_rgb.ViewModels
         public ObservableCollection<Color> ColorCollection = new ObservableCollection<Color>();
         byte R, G, B, A;
         MainWindow _view;
-        SolidColorBrush ColorPreview_;
         public MainViewModel(MainWindow view)
         {
             _view = view;
@@ -69,18 +68,6 @@ namespace _0811_mvvm_rgb.ViewModels
             {
                 A = value;
                 OnPropertyChanged(nameof(Alpha));
-            }
-        }
-        public SolidColorBrush ColorPreview
-        {
-            get
-            {
-                return ColorPreview_;
-            }
-            set
-            {
-                ColorPreview_ = value;
-                OnPropertyChanged(nameof(ColorPreview));
             }
         }
 
